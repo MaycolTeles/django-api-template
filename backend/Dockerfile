@@ -1,0 +1,36 @@
+# Use an official Python runtime as the base image
+FROM python:3.12-slim
+
+# Set unbuffered output for python
+# 1. Prevents Python from writing pyc files to disc
+# 2. Prevents Python from buffering stdout and stderr
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Poetry's configuration:
+ENV POETRY_VIRTUALENVS_CREATE=false
+
+# Install dependencies
+RUN apt-get update && apt-get install make && pip install poetry
+    # && pip install psycopg2
+
+# Copy poetry.lock and pyproject.toml
+COPY ./pyproject.toml pyproject.toml
+COPY ./poetry.lock poetry.lock
+
+# Install project dependencies
+RUN poetry install
+
+# Copy the entrypoint.sh file into the container and make it executable
+COPY ./entrypoint.sh .
+RUN sed -i 's/\r$//g' entrypoint.sh
+RUN chmod +x entrypoint.sh
+
+# Copy Makefile
+COPY ./Makefile Makefile
+
+# Set the working directory
+WORKDIR /app
+
+# Run entrypoint.sh
+ENTRYPOINT ["/../entrypoint.sh"]
