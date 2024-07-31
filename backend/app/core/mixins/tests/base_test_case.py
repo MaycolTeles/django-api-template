@@ -7,7 +7,15 @@ for all the non-API test cases in the project.
 For API test cases, use the `BaseAPITestCase` class in the `base_api_test_case.py` module.
 """
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 from django.test import TestCase
+
+
+if TYPE_CHECKING:
+    from account.models import User
 
 
 class BaseTestCase(TestCase):
@@ -21,10 +29,7 @@ class BaseTestCase(TestCase):
         * `create_user`: Method to create a user.
     """
 
-    # Importing User here to avoid needing to use type checking.
-    from account.models import User
-
-    def create_user(self, *args, **kwargs) -> "User":
+    def create_user(self, *args, **kwargs) -> User:
         """
         Create a user instance.
 
@@ -34,5 +39,7 @@ class BaseTestCase(TestCase):
         # Importing mixer here to avoid needing to add it as a production dependency.
         from mixer.backend.django import mixer
 
-        user = mixer.blend("account.User", *args, **kwargs)
-        return user  # type: ignore
+        from account.models import User
+
+        user: User = mixer.blend(User, *args, **kwargs)  # type: ignore
+        return user
