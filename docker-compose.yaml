@@ -1,0 +1,14 @@
+
+services:
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    command: sh -c "cd .. && make run"
+    env_file: ./backend/.env
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./backend/app:/app"
