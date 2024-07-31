@@ -1,0 +1,78 @@
+name: Backend CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.12
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install poetry
+        make install-dev
+
+    - name: Test with pytest
+      run: make coverage
+
+    - name: Upload test report
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-report
+        path: test_report/
+
+    - name: Upload test coverage report
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-coverage-report
+        path: htmlcov/
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.12
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install poetry
+        make install-dev
+
+    - name: Lint with ruff
+      run: make lint
+
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.12
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install poetry
+        make install-dev
+
+    - name: Format with ruff
+      run: make format-check
