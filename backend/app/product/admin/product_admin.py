@@ -15,8 +15,8 @@ class ProductAdmin(BaseAdmin):
     """
 
     search_fields = (
-        'name',
-        'description',
-        'price',
+        "name",
+        "description",
+        "price",
     )
-    list_display = ('name', 'description', 'price')
+    list_display = ("name", "description", "price")

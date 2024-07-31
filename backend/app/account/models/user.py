@@ -13,6 +13,6 @@ class User(AbstractUser, BaseModel):
     """
 
     class Meta:
-        ordering = ['-created_at']
-        verbose_name = 'User'
-        verbose_name_plural = 'Users'
+        ordering = ["-created_at"]
+        verbose_name = "User"
+        verbose_name_plural = "Users"

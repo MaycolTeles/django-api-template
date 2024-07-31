@@ -1,6 +1,10 @@
-from .product_filter import ProductFilter
-
+"""
+Module to export the ProductFilter class.
+"""
 
 __all__ = [
-    'ProductFilter',
+    "ProductFilter",
 ]
+
+
+from .product_filter import ProductFilter

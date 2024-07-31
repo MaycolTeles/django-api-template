@@ -14,17 +14,29 @@ from core.mixins import BaseModel
 
 class Product(BaseModel):
     """
-    Model to store product-related data, such as:
-        * user: the user who created the product;
-        * name: the name of the product;
-        * description: the description of the product
-        * price: the price of the product.
+    Model to store some product-related data.
+
+    This model is used to store some product-related data.
+
+    Fields:
+    ------
+        * `user`: `ForeignKey[User]`
+            The user who created the product
+
+        * `name`: `str`
+            The name of the product
+
+        * `description`: `str`
+            The description of the product
+
+        * `price`: `Decimal`
+            The price of the product
     """
 
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='products',
+        related_name="products",
         verbose_name=_("User"),
         help_text=_("The user who created the product."),
     )
@@ -35,8 +47,7 @@ class Product(BaseModel):
     )
     description = models.TextField(
         _("Description"),
-        null=True,
-        blank=True,
+        default="",
         help_text=_("The description of the product (optional)."),
     )
     price = models.DecimalField(
@@ -48,8 +59,5 @@ class Product(BaseModel):
     )
 
     class Meta:
-        verbose_name = 'Product'
-        verbose_name_plural = 'Products'
-
-    def __str__(self):
-        return self.name
+        verbose_name = "Product"
+        verbose_name_plural = "Products"

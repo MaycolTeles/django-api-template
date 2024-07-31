@@ -1,3 +1,16 @@
+# ======= project =======
+[project]
+name = "django-api-template"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Your Name", email = "yourname@example.com"},
+]
+requires-python = ">= 3.12"
+readme = "README.md"
+
+
+# ======= poetry =======
 [tool.poetry]
 name = "django-api-template"
 version = "0.1.0"
@@ -7,19 +20,129 @@ license = "GNU"
 readme = "README.md"
 package-mode = false
 
+
+# ======= dependencies =======
 [tool.poetry.dependencies]
 python = "^3.12"
 Django = "^5.0.6"
 djangorestframework = "^3.15.2"
 drf-spectacular = "^0.27.2"
 django-filter = "^24.2"
-python-dotenv = "^1.0.1"
+structlog = "^24.4.0"
+python-decouple = "^3.8"
+celery = "^5.4.0"
+django-click = "^2.4.0"
+
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "^7.1.0"
-pytest = "^8.2.2"
 mixer = "^7.2.2"
+pytest = "^8.2.2"
+pytest-django = "^4.8.0"
+pytest-cov = "^5.0.0"
+pytest-html = "^4.1.1"
+pytest-xdist = "^3.6.1"
+ruff = "^0.5.1"
+pre-commit = "^3.7.1"
 
+
+[tool.poetry.group.prod.dependencies]
+gunicorn = "^22.0.0"
+
+
+# ======= pytest =======
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "core.settings"
+python_files = "test_*.py"
+
+
+# ======= coverage =======
+[tool.coverage.report]
+omit = [
+    "asgi.py",
+    "wsgi.py",
+    "manage.py",
+]
+exclude_also = [
+    "if TYPE_CHECKING:"
+]
+
+
+# ======= ruff =======
+[tool.ruff]
+line-length = 120
+src = ["app"]
+extend-exclude = ["migrations", "base_admin.py"]
+
+
+[tool.ruff.lint]
+select = [
+    "ALL"
+]
+ignore = [
+    # Single line implicit string concatenation (`ISC001`)
+    "ISC001",
+
+    # Missing type annotation for `*args` (`ANN002`)
+    "ANN002",
+    # Missing type annotation for `**kwargs` (`ANN003`)
+    "ANN003",
+
+    # Missing trailing comma in a single-line tuple (`COM812`)
+    "COM812",
+
+    # Missing docstring in public nested class (`D106`)
+    "D106",
+    # One-line docstring should fit on one line (`D200`)
+    "D200",
+    # 1 blank line required before class docstring (`D203`)
+    "D203",
+    # Multi-line docstring summary should start at the second line (`D212`)
+    "D212",
+    # First line of docstring should be in imperative mood (`D401`)
+    "D401",
+    # Section name should end with a newline (`D406`)
+    "D406",
+    # Missing blank line after last section (`D413`)
+    "D413",
+    # Missing argument description in the docstring for `<method_name>`: `<argument_name>` (`D417`)
+    "D417",
+
+    # Use specific rule codes when ignoring type issues (`PGH003`)
+    "PGH003",
+
+    # Use a regular `assert` instead of unittest-style `assertEqual` (`PT009`)
+    "PT009",
+
+    # Mutable class attributes should be annotated with `ClassVar` (`RUF012`)
+    "RUF012",
+
+    # Do not catch blind exception: `Exception` (`BLE001`)
+    "BLE001",
+
+    # Use `X | Y` for type annotations (`UP007`)
+    "UP007",
+
+    # Unnecessary assignment to `variable` before `return` statement (`RET504`)
+    "RET504",
+]
+
+
+[tool.ruff.lint.per-file-ignores]
+# Missing return type annotation for public function `function_name` (`ANN201`)
+"test*.py" = ["ANN201"]
+# Missing docstring in public package (`D104`)
+"__init__.py" = ["D104"]
+
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+
+
+[tool.ruff.lint.mccabe]
+max-complexity = 5
+
+
+# ======= build-system =======
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

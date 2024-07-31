@@ -1,6 +1,10 @@
-from .product import Product
-
+"""
+Module to export the Product model.
+"""
 
 __all__ = [
-    'Product',
+    "Product",
 ]
+
+
+from .product import Product

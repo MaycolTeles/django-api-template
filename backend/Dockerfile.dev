@@ -11,8 +11,11 @@ ENV PYTHONUNBUFFERED 1
 ENV POETRY_VIRTUALENVS_CREATE=false
 
 # Install dependencies
-RUN apt-get update && apt-get install make && pip install poetry
-    # && pip install psycopg2
+RUN apt-get update \
+    && apt-get install -y netcat-traditional \
+    && apt-get install make \
+    && pip install --upgrade pip \
+    && pip install poetry
 
 # Copy poetry.lock and pyproject.toml
 COPY ./pyproject.toml pyproject.toml
@@ -22,8 +25,7 @@ COPY ./poetry.lock poetry.lock
 RUN poetry install
 
 # Copy the entrypoint.sh file into the container and make it executable
-COPY ./entrypoint.sh .
-RUN sed -i 's/\r$//g' entrypoint.sh
+COPY /scripts/entrypoint.sh entrypoint.sh
 RUN chmod +x entrypoint.sh
 
 # Copy Makefile

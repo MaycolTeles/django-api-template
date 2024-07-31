@@ -1,5 +1,7 @@
 """
-Module containing the BaseModel class.
+Base model module for Django models.
+
+This module defines a `BaseModel` class that provides common fields for all models.
 """
 
 import uuid
@@ -10,15 +12,17 @@ from django.utils.translation import gettext_lazy as _
 
 class BaseModel(models.Model):
     """
-    Class to add the following fields to all models that inherit from it:
+    Base Model class to add some common fields to all models.
 
-    `id` : `UUIDField`
+    Fields:
+    ------
+    * `id` : `UUIDField`
         To be used as the primary key.
 
-    `created_at` : `DateTimeField`
+    * `created_at` : `DateTimeField`
         To store the date and time of creation.
 
-    `updated_at` : `DateTimeField`
+    * `updated_at` : `DateTimeField`
         To store the date and time of the last update.
     """
 
@@ -42,4 +46,4 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ('-created_at',)
+        ordering = ("-created_at",)

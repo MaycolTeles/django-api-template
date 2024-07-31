@@ -5,10 +5,9 @@ Module containing the User serializer.
 from rest_framework import serializers
 
 from account.models import User
-from core.mixins import BaseModelSerializer
 
 
-class UserSerializer(BaseModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     """
     Class to serialize the User model.
     """

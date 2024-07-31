@@ -1,10 +1,12 @@
 """
-__init__ module to export the classes below.
+Module for providing a base model class to be inherited by other Django models.
+
+This module exports the BaseModel class that provides common fields for all models.
 """
-
-from .base_model import BaseModel
-
 
 __all__ = [
     "BaseModel",
 ]
+
+
+from .base_model import BaseModel

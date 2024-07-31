@@ -9,7 +9,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -18,19 +17,76 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, help_text='The unique identifier of the record.', primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, help_text='The date and time the record was created.', verbose_name='Created at')),
-                ('updated_at', models.DateTimeField(auto_now=True, help_text='The date and time the record was last updated.', verbose_name='Updated at')),
-                ('name', models.CharField(help_text='The name of the product.', max_length=255, verbose_name='Name')),
-                ('description', models.TextField(blank=True, help_text='The description of the product (optional).', null=True, verbose_name='Description')),
-                ('price', models.DecimalField(decimal_places=2, help_text='The price of the product. Must be greater than or equal to 0.', max_digits=10, validators=[django.core.validators.MinValueValidator(Decimal('0'))], verbose_name='Price')),
-                ('user', models.ForeignKey(help_text='The user who created the product.', on_delete=django.db.models.deletion.CASCADE, related_name='products', to=settings.AUTH_USER_MODEL, verbose_name='User')),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        help_text="The unique identifier of the record.",
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True,
+                        help_text="The date and time the record was created.",
+                        verbose_name="Created at",
+                    ),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(
+                        auto_now=True,
+                        help_text="The date and time the record was last updated.",
+                        verbose_name="Updated at",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        help_text="The name of the product.",
+                        max_length=255,
+                        verbose_name="Name",
+                    ),
+                ),
+                (
+                    "description",
+                    models.TextField(
+                        blank=True,
+                        help_text="The description of the product (optional).",
+                        null=True,
+                        verbose_name="Description",
+                    ),
+                ),
+                (
+                    "price",
+                    models.DecimalField(
+                        decimal_places=2,
+                        help_text="The price of the product. Must be greater than or equal to 0.",
+                        max_digits=10,
+                        validators=[django.core.validators.MinValueValidator(Decimal("0"))],
+                        verbose_name="Price",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        help_text="The user who created the product.",
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="products",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="User",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Product',
-                'verbose_name_plural': 'Products',
+                "verbose_name": "Product",
+                "verbose_name_plural": "Products",
             },
         ),
     ]
