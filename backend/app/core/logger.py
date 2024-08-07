@@ -25,7 +25,7 @@ def get_logger(component: str, subcomponent: str, **kwargs) -> stdlib.BoundLogge
         Any additional keyword arguments to be passed to the logger.
 
     Returns:
-    -------
+    --------------
     `BoundLogger`
         The logger instance with the provided component and subcomponent names
         and any additional keyword arguments.

@@ -5,12 +5,12 @@ setup:
 
 .PHONY: run
 run:
-	poetry run python app/manage.py runserver 0.0.0.0:8000
+	cd app && poetry run python manage.py runserver 0.0.0.0:8000
 
 
 .PHONY: run-prod
 run-prod:
-	cd app && poetry run gunicorn core.wsgi:application --bind 0.0.0.0:8000
+	cd app && poetry run gunicorn core.wsgi --bind 0.0.0.0:8000
 
 
 .PHONY: migrations
@@ -53,14 +53,14 @@ format-check:
 	poetry run ruff format --check
 
 
-.PHONY: install
-install:
-	poetry install --without dev
-
-
 .PHONY: install-dev
 install-dev:
 	poetry install --with dev
+
+
+.PHONY: install-prod
+install-prod:
+	poetry install --with prod
 
 
 .PHONY: commit

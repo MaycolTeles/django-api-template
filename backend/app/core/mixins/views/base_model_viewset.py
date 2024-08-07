@@ -26,12 +26,12 @@ class BaseModelViewSet(ModelViewSet):
     inherit from `ModelViewSet` directly.
 
     Attributes:
-    ----------
+    -------------
         * `queryset` : `QuerySet`
             The queryset to be used by the ViewSet.
 
     Methods:
-    -------
+    ----------
         * `get_queryset`: Method to get the queryset based on the user.
     """
 
@@ -44,7 +44,7 @@ class BaseModelViewSet(ModelViewSet):
         This method filters the queryset based on the user. If the user is a superuser, the entire queryset is returned.
 
         Returns:
-        -------
+        ----------
         QuerySet
             The filtered queryset based on the user.
         """

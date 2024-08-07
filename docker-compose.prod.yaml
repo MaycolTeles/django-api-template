@@ -6,7 +6,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data/
+      - ./.postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -16,7 +16,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile.prod
-    command: sh -c "cd .. && make run-prod"
+    command: sh -c "make run-prod"
     env_file: ./backend/.env
     restart: always
     depends_on:
@@ -24,9 +24,9 @@ services:
     links:
       - db:db
     volumes:
-      - "./backend/app:/app"
-      - static_volume:/app/staticfiles
-      - media_volume:/app/mediafiles
+      - "./backend/app:/app/app"
+      - static_volume:/app/app/staticfiles
+      - media_volume:/app/app/mediafiles
 
   nginx:
     build: ./nginx

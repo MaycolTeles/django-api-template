@@ -5,7 +5,7 @@ The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
 
 Examples
---------
+-----------
 Function views
     1. Add an import:  from my_app import views
     2. Add a URL to urlpatterns:  path('', views.home, name='home')
@@ -37,6 +37,7 @@ router.registry.extend(product_router.registry)
 
 
 urlpatterns = [
+    path("admin/docs/", include("django.contrib.admindocs.urls")),
     path("admin/", admin.site.urls),
     path("api/", include(router.urls)),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),

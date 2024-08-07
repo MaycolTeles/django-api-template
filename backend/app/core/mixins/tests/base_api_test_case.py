@@ -28,7 +28,7 @@ class BaseAPITestCase(APITestCase, BaseTestCase):
     It also provides a method to login the user.
 
     Attributes
-    ----------
+    -------------
         * `user` : `User`
             The user instance.
 
@@ -36,7 +36,7 @@ class BaseAPITestCase(APITestCase, BaseTestCase):
             The user ID.
 
     Methods
-    -------
+    ----------
         * `setUp`: Method to set up the test case. This method runs before every test case.
         * `login`: Method to login the user.
     """

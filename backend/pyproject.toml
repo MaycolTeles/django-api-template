@@ -4,6 +4,7 @@ name = "django-api-template"
 version = "0.1.0"
 description = ""
 authors = [
+    {name = "Maycol Teles", email = "maycolteles@hotmail.com"},
     {name = "Your Name", email = "yourname@example.com"},
 ]
 requires-python = ">= 3.12"

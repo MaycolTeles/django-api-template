@@ -33,12 +33,12 @@ class BaseAdmin(ModelAdmin):
         extend the list by including the base fields.
 
         Args
-        -------
+        ----------
             * `request`: The HttpRequest object.
             * `obj`: The model instance.
 
         Returns
-        -------
+        ----------
             A list of readonly field names.
         """
         readonly_fields = super().get_readonly_fields(request, obj)
@@ -52,12 +52,12 @@ class BaseAdmin(ModelAdmin):
         by adding the base fields to the base fieldset.
 
         Args
-        -------
+        ----------
             * `request`: The HttpRequest object.
             * `obj`: The model instance.
 
         Returns
-        -------
+        ----------
             A list of fieldsets for the model admin, including the base fieldset
             that contains the base fields and the default fieldset.
         """
@@ -82,7 +82,7 @@ class BaseAdmin(ModelAdmin):
         that are always displayed in the admin interface.
 
         Returns
-        -------
+        ----------
             A fieldset containing the base fields.
         """
         return (
@@ -101,11 +101,11 @@ class BaseAdmin(ModelAdmin):
         the fields are the given fields.
 
         Args
-        -------
+        ----------
             fields: A list of field names.
 
         Returns
-        -------
+        ----------
             A fieldset containing the given fields.
         """
         fieldset_name = f"{self.model._meta.verbose_name.capitalize()} details"

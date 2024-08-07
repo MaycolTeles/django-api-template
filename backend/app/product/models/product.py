@@ -19,7 +19,7 @@ class Product(BaseModel):
     This model is used to store some product-related data.
 
     Fields:
-    ------
+    -----------
         * `user`: `ForeignKey[User]`
             The user who created the product
 

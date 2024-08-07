@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Script to wait for the PostgreSQL database to be ready before starting the Django application
+# And aplly the migrations and collect the static files.
+
 if [ "$DB" = "postgres" ]
 then
     echo "Waiting for postgres..."
@@ -11,7 +14,7 @@ then
     echo "PostgreSQL started"
 fi
 
-python manage.py migrate --noinput
-python manage.py collectstatic --no-input
+python app/manage.py migrate --noinput
+python app/manage.py collectstatic --no-input
 
 exec "$@"

@@ -10,7 +10,7 @@ def _split_env_string(env_string: str) -> list[str]:
     Parse a string from the environment into a list.
 
     Example:
-    -------
+    ----------
     `"localhost 127.0.0.1 0.0.0.0"` -> [`"localhost"`, `"127.0.0.1"`, `"0.0.0.0"`]
 
     Args:

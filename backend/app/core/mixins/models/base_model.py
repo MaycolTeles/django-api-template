@@ -15,7 +15,7 @@ class BaseModel(models.Model):
     Base Model class to add some common fields to all models.
 
     Fields:
-    ------
+    -----------
     * `id` : `UUIDField`
         To be used as the primary key.
 

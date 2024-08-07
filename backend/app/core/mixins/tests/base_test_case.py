@@ -25,7 +25,7 @@ class BaseTestCase(TestCase):
     This class defines the method to create a user to be used in any test cases.
 
     Methods:
-    -------
+    ------------
         * `create_user`: Method to create a user.
     """
 
