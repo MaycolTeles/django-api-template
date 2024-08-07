@@ -48,6 +48,11 @@ In order to set up the project, follow these steps:
     ./scripts/setup.sh
     ```
 
+    or using the Makefile:
+    ```bash
+    make setup
+    ```
+
 4. Run the container using the command documented in the [main README](../README.md) file.
 
 ## Reminders
