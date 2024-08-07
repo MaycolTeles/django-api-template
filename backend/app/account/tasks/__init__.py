@@ -10,4 +10,4 @@ __all__ = [
 ]
 
 
-from setup_user import task_setup_user
+from .setup_user import task_setup_user
