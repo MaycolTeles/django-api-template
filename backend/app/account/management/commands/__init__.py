@@ -9,4 +9,4 @@ __all__ = [
 ]
 
 
-from .command_setup_user import setup_user
+from .setup_user import setup_user
