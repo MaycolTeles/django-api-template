@@ -1,11 +1,16 @@
 # Backend / API Template
 
-The template includes the following features:
+The template includes the following:
+
+* [Features](#features)
+* [Packages and dependencies](#packages-and-dependencies)
+* [Setup](#setup)
+* [Reminders](#reminders)
 
 
 ## Features
 
-### Custom User model:
+### Custom User model: <a name="features"></a>
 This template includes a custom User model that extends the AbstractBaseUser class. You can use this model to store user information in your project.
 
 The user model is located in `account.models.user` module and is ready to be used in your project. You can use this model to store user information and authenticate users in your project.
@@ -19,7 +24,7 @@ This template includes a `Makefile` that can be used to run common commands for 
 ### Management Commands / Async Tasks:
 This template includes an example of a management command and a `celery` async task that can be executed in the background. You can use these commands to perform long-running tasks, schedule tasks to run at specific times, or run tasks in parallel. The management command is located in the `account.management.commands` module and the Celery task is located in the `account.tasks` module. You can use these examples as a starting point and build more commands and tasks on top of them.
 
-## Packages and dependencies:
+## Packages and dependencies: <a name="packages-and-dependencies"></a>
 
 ### Poetry (Environment and dependencies):
 This template uses `poetry` to manage dependencies and virtual environments. You can use the `poetry` commands to manage your project dependencies and create a virtual environment for your project. All the dependencies are listed in the `pyproject.toml` file and they're split into `main`, `dev` and `prod` dependencies.
@@ -36,7 +41,7 @@ This template uses `pytest` as the test runner, mainly because it's capability o
 ### Environment variables:
 This template uses the `python-decouple` package to manage environment variables. In order to run the project, create a `.env` file in the `backend` directory from the `.env.example` template and assign the required values to the variables.
 
-## Setup
+## Setup <a name="setup"></a>
 In order to set up the project, follow these steps:
 
 1. Create a `.env` file in the `backend` directory from the `.env.example` template and assign the required values to the variables.
@@ -55,7 +60,7 @@ In order to set up the project, follow these steps:
 
 4. Run the container using the command documented in the [main README](../README.md) file.
 
-## Reminders
+## Reminders <a name="reminders"></a>
 * Don't forget to create `backend/.env` file
 
 * Don't forget to update `pyproject.toml` with your project name, version, description, and author.
