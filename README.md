@@ -2,6 +2,8 @@
 
 This is a Django API template that can be used to quickly start a new project. It includes a few basic features that are commonly used in most projects.
 
+In order to have your project up-and-running right away, just follow the [backend setup](backend/README.md#setup) and then the [project setup](#setup)
+
 The template includes the following:
 
 * [Backend / API](#backend-api)
