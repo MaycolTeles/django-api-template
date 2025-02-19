@@ -7,6 +7,8 @@
 
 poetry init
 
+poetry lock
+
 poetry install
 
 poetry run pre-commit install
